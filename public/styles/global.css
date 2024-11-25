@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter_18pt-Regular.tiff') format('tiff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0;
+}

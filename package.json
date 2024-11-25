@@ -10,8 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.13",
     "@astrojs/check": "^0.9.4",
+    "accessible-astro-components": "^2.3.6",
+    "astro": "^4.16.13",
     "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.81.0"
   }
 }
