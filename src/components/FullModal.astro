@@ -2,6 +2,7 @@
 import { Modal } from 'accessible-astro-components'
 ---
 <button 
+  class="navButton"
   title="What the if information"
   id="info-trigger"
 >
@@ -12,26 +13,16 @@ import { Modal } from 'accessible-astro-components'
     <circle cx="124" cy="84" r="12" fill="currentColor"/>
   </svg>
 </button>
-<!-- <button id="modal2-trigger">Modal 2</button> -->
 
 <Modal
   triggerId="info-trigger"
-  title="What the if information"
+  title="What the if!"
 >
   <p>Hack day dev challenge</p>
   <p><strong>Prompt:</strong> Use AI to build a web app that is not a chatbot.</p>
 </Modal>
 
-<style lang="scss" is:global>
-  button {
-    background-color: transparent;
-    border: none;
-    color: inherit;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    padding: 0;
-  }
+<style lang="scss">
 
   svg {
     stroke-width: 1;
@@ -41,48 +32,5 @@ import { Modal } from 'accessible-astro-components'
   svg path {
     stroke-linecap: round;
     stroke-linejoin: round;
-  }
-
-  body {
-    .modal {
-      width: 90vw;
-      max-width: 800px;
-      height: 90vh;
-      max-height: 500px;
-      background-color: var(--background-color);
-      color: var(--text-color);
-      border: none;
-      border-radius: 12px;
-    }
-
-    .modal__inner {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .modal__content {
-      padding: 1rem;
-      gap: 0;
-
-      h3 {
-        margin-top: 0;
-      }
-    }
-
-    .modal__close button {
-      padding: 12px;
-      text-align: center;
-      height: auto;
-      background-color: transparent;
-      color: var(--text-color);
-
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        text-decoration: underline;
-      }
-    }
   }
 </style>

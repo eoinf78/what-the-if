@@ -1,0 +1,13 @@
+
+<script is:inline>
+  // document
+  //   .getElementById("setTheme")
+  //   .addEventListener("click", () => theme.setTheme("auto"));
+
+  document.getElementById("getTheme").innerHTML = theme.getTheme();
+
+  document.addEventListener("theme-changed", () => {
+    const resultsElem = document.getElementById("getTheme");
+    resultsElem && (resultsElem.innerHTML = theme.getTheme());
+  });
+</script>

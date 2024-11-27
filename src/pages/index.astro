@@ -1,25 +1,27 @@
 ---
+import { GenerateImage } from '../components/GenerateImage';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import ThemeToggleButton from '../components/ThemeToggleButton.astro';
-import ThemeSelect from '../components/ThemeSelect.astro';
+import { imageQuery } from './api/imageGen';
+// import ollama from 'ollama';
+
+// const output = await ollama.generate({
+//   model: 'llama3.2',
+//   prompt: 'what is the sun made up of?',
+// });
+
+// console.log(output);
 ---
 
 <Layout title="WHAT THE IF!">
   <!-- <button id="setTheme">theme.setTheme("auto")</button>
   <p><code>theme.getTheme()</code> returns: <code id="getTheme"></code></p> -->
-  <script is:inline>
-    document
-      .getElementById("setTheme")
-      .addEventListener("click", () => theme.setTheme("auto"));
-
-    document.getElementById("getTheme").innerHTML = theme.getTheme();
-
-    document.addEventListener("theme-changed", () => {
-      const resultsElem = document.getElementById("getTheme");
-      resultsElem && (resultsElem.innerHTML = theme.getTheme());
-    });
-  </script>
+  <h1>What the if!</h1>
+  <!-- <div>
+    {output.response}
+  </div> -->
+  <div>
+    <GenerateImage client:only="react" />
+  </div>
 </Layout>
 
 <style>

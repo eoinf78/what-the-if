@@ -1,5 +1,30 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
+import { server } from 'typescript';
+
+import react from '@astrojs/react';
+
+import node from '@astrojs/node';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  experimental: {
+    env: {
+      schema: {
+        HUGGINGFACE_TOKEN: envField.string({
+          context: 'server',
+          access: 'secret',
+          startsWith: 'hf_',
+          optional: false
+        }),
+      },
+    }
+  },
+
+  integrations: [react()],
+  output: 'hybrid',
+
+  adapter: node({
+    mode: 'standalone'
+  })
+});
