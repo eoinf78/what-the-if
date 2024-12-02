@@ -1,0 +1,30 @@
+---
+import { Modal } from 'accessible-astro-components'
+---
+<button 
+  class="selfieButtons"
+  title="What the if information"
+  id="info-trigger"
+>
+  Show the story!
+</button>
+
+<Modal
+  triggerId="story-trigger"
+  title="Storytime!"
+>
+  <slot />
+</Modal>
+
+<style lang="scss">
+
+  svg {
+    stroke-width: 1;
+    width: 100%;
+    height: 100%;
+  }
+  svg path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>

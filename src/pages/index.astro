@@ -1,7 +1,7 @@
 ---
-import { GenerateImage } from '../components/GenerateImage';
 import Layout from '../layouts/Layout.astro';
-import { imageQuery } from './api/imageGen';
+import { Image } from 'astro:assets';
+import './styles/home.scss';
 // import ollama from 'ollama';
 
 // const output = await ollama.generate({
@@ -15,13 +15,18 @@ import { imageQuery } from './api/imageGen';
 <Layout title="WHAT THE IF!">
   <!-- <button id="setTheme">theme.setTheme("auto")</button>
   <p><code>theme.getTheme()</code> returns: <code id="getTheme"></code></p> -->
-  <h1>What the if!</h1>
+  <div class="homeContainer">
+    <div class="homeCard">
+      <Image src="/images/big-blue-monster.jpeg" alt="What the if! logo" width={400} height={400} class="homeImage" />
+      <div class="homeCardContent">
+        <h1>What the IF!</h1>
+        <a href="/new" class="homeButton">LET'S GET STARTED!</a>
+      </div>
+    </div>
+  </div>
   <!-- <div>
     {output.response}
   </div> -->
-  <div>
-    <GenerateImage client:only="react" />
-  </div>
 </Layout>
 
 <style>

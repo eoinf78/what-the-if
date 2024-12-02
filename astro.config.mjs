@@ -22,7 +22,7 @@ export default defineConfig({
   },
 
   integrations: [react()],
-  output: 'hybrid',
+  output: 'server',
 
   adapter: node({
     mode: 'standalone'

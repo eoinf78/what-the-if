@@ -1,0 +1,103 @@
+@use './theme.scss' as *;
+
+.userContainer {
+  width: 90%;
+  max-width: 600px;
+  margin: var(--space-400) auto;
+  display: grid;
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.selfieWrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 150px;
+  overflow: hidden;
+  background: #ccc;
+
+  img,
+  video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+
+    svg {
+      width: var(--space-500);
+      height: var(--space-500);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+select {
+  padding: var(--space-100) var(--space-200);
+  border: 1px solid #ccc;
+  border-radius: var(--space-100);
+}
+
+button.selfieButtons {
+  border: 0;
+  background: #3333ff;
+  color: #fff;
+  padding: var(--space-100) var(--space-200);
+  min-height: var(--space-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-150);
+  border-radius: var(--space-200);
+  text-align: center;
+  cursor: pointer;
+
+  svg {
+    fill: currentColor;
+    width: var(--space-200);
+    height: var(--space-200);
+  }
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-50);
+  font-size: 0.8rem;
+  font-weight: bold;
+
+  input {
+    padding: var(--space-100) var(--space-200);
+    border: 1px solid #ccc;
+    border-radius: var(--space-100);
+  }
+}
+
+.generateContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
