@@ -4,6 +4,7 @@ import type { UserData } from "./UserForm";
 import ollama from 'ollama';
 import { friends } from "../utils/freinds";
 import FullModal from "./FullModal.astro";
+import * as Dialog from '@radix-ui/react-dialog';
 
 interface GenerateImageProps {
   userData: UserData;
@@ -71,29 +72,49 @@ export const GenerateImage: FC<GenerateImageProps> = ({ userData }) => {
             onChange={(e) => setInput(e.target.value)}
           />
         )}
-        <select onChange={e => setSelectedFriend(e.target.value)}>
+        <select 
+          onChange={e => setSelectedFriend(e.target.value)}
+        >
+          <option value="">Select a friend...</option>
           <option value="llama">Llama</option>
           <option value="monster">Monster</option>
           <option value="dinosaur">Dinosaur</option>
           <option value="robot">Robot</option>
-          <option value="custom">Custom</option>
+          <option value="custom">Describe my own friend</option>
         </select>
-        <button onClick={generateImage} disabled={loading} className="selfieButtons">
-          {!loading ? 'Find my friend!' : 'Looking for your friend...'}
-        </button>
-        {error && <p>Error: {error}</p>}
         {image && (
           <img src={image} alt="Generated Image" style={{ width: 300, height: 300 }} />
         )}
-        {generatingStory && <p>Creating a story...</p>}
-        {generatedStory && (
-          <div>
-            <h2>{`A story about ${userData.name} and her friend ${userData.friendName}`}</h2>
-            {generatedStory?.split('\n').map((line, index) => (
-              <p key={index}>{line}</p>
-            ))}
-          </div>
-        )}
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <button 
+            onClick={generateImage} 
+            disabled={loading || !selectedFriend} 
+            className="selfieButtons"
+          >
+            {!loading ? 'Find my friend!' : 'Looking for your friend...'}
+          </button>
+          {error && <p>Error: {error}</p>}
+          <Dialog.Root>
+            <Dialog.Overlay className="dialogOverlay" />
+            <Dialog.Trigger asChild>
+              <button disabled={!generatedStory} className="selfieButtons">
+                {generatingStory ? 'Creating a story...' : 'View story'}
+              </button>
+            </Dialog.Trigger>
+            <Dialog.Content className="dialogContent">
+              <Dialog.Close className="dialogClose">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="none" d="M0 0h256v256H0z"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M200 56 56 200M200 200 56 56"/></svg>
+              </Dialog.Close>
+              <Dialog.Title>{`A story about ${userData.name} and her friend ${userData.friendName}`}</Dialog.Title>
+              <div className="storyWrapper">
+                {generatedStory?.split('\n').map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
+              </div>
+            </Dialog.Content>
+          </Dialog.Root>
+        </div>
+        {/* )} */}
       </div>
     </div>
   );
